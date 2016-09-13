@@ -1,6 +1,14 @@
-require 'rake'
+#!/usr/bin/env rake
+
 require 'rake/testtask'
-require 'rake/rdoctask'
+
+begin
+  require 'rdoc/task'
+rescue LoadError
+  require 'rdoc/rdoc'
+  require 'rake/rdoctask'
+  RDoc::Task = Rake::RDocTask
+end
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -13,7 +21,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 desc 'Generate documentation for the userstamp plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
+RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'Userstamp'
   rdoc.options << '--line-numbers' << '--inline-source'
