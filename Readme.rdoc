@@ -9,15 +9,15 @@ This fork has been created to combine the grosser changes that enable use of the
 
 This fork also includes changes to perform the model stamping before validation is performed so that the model can enforce the presence of stamp attribute values eg.
 
-  validates :created_by, :presence => true
-  validates :updated_by, :presence => true
+  validates :created_by, presence: true
+  validates :updated_by, presence: true
 
 
 == Using the Fork
 
 To use this fork add the following to your application gemfile:
 
-  gem 'userstamp', :git => "git://github.com/insphire/userstamp.git"
+  gem 'magiclabs-userstamp', github: 'magiclabs/userstamp'
 
 
 == Overview
