@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "magiclabs-userstamp"
+  s.name = "originator"
   s.version = File.read(File.join(File.dirname(__FILE__), 'VERSION')).strip
 
   s.authors = ["DeLynn Berry", "Thomas von Deyen"]
-  s.homepage = "https://github.com/magiclabs/userstamp"
-  s.email = ["tvd@magiclabs.de"]
-  s.summary = "Adds magic creator and updater attributes to your ActiveRecord models."
+  s.homepage = "https://github.com/AlchemyCMS/originator"
+  s.email = ["thomas@vondeyen.com"]
+  s.summary = "Adds originator attributes to your ActiveRecord models."
   s.description = "This gem extends ActiveRecord::Base to add automatic updating of created_by and updated_by attributes of your models in much the same way that the ActiveRecord::Timestamp module updates created_(at/on) and updated_(at/on) attributes."
   s.licenses = ["MIT"]
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
     "lib/stampable.rb",
     "lib/stamper.rb",
     "lib/userstamp.rb",
-    "magiclabs-userstamp.gemspec",
+    "originator.gemspec",
     "rdoc/classes/Ddb/Controller.html",
     "rdoc/classes/Ddb/Controller/Userstamp.html",
     "rdoc/classes/Ddb/Controller/Userstamp/InstanceMethods.html",
