@@ -46,6 +46,11 @@ module Ddb #:nodoc:
           # Defaults to :deleter_id when compatibility mode is off
           # Defaults to :deleted_by when compatibility mode is on
           class_attribute  :deleter_attribute
+
+          # Define if the belongs_to association should be optional or not
+          # Defaults to true to mantein the old behavior
+          class_attribute  :userstamp_optional
+
         end
       end
 
@@ -59,7 +64,8 @@ module Ddb #:nodoc:
         #               :creator_attribute  => :create_user,
         #               :updater_attribute  => :update_user,
         #               :deleter_attribute  => :delete_user
-        #               :deleter            => true
+        #               :deleter            => true,
+        #               :optional           => true
         #   end
         #
         # The method will automatically setup all the associations, and create <tt>before_save</tt>
@@ -73,6 +79,7 @@ module Ddb #:nodoc:
             :creator_attribute  => (compatability ? :created_by : :creator_id),
             :updater_attribute  => (compatability ? :updated_by : :updater_id),
             :deleter_attribute  => (compatability ? :deleted_by : :deleter_id),
+            :optional           => true,
             :deleter            => !!(options.has_key?(:deleter_attribute) or defined?(Caboose::Acts::Paranoid))
           }.merge(options)
 
@@ -80,17 +87,18 @@ module Ddb #:nodoc:
           self.creator_attribute  = defaults[:creator_attribute].to_sym
           self.updater_attribute  = defaults[:updater_attribute].to_sym
           self.deleter_attribute  = defaults[:deleter_attribute].to_sym
+          self.userstamp_optional = !!defaults[:optional]
 
           class_eval do
             klass = "::#{stamper_class_name.to_s.singularize.camelize}"
-            belongs_to :creator, :class_name => klass, :foreign_key => creator_attribute, optional: true
-            belongs_to :updater, :class_name => klass, :foreign_key => updater_attribute, optional: true
+            belongs_to :creator, :class_name => klass, :foreign_key => creator_attribute, optional: userstamp_optional
+            belongs_to :updater, :class_name => klass, :foreign_key => updater_attribute, optional: userstamp_optional
 
             before_validation :set_updater_attribute
             before_validation :set_creator_attribute, :on => :create
 
             if defaults[:deleter]
-              belongs_to :deleter, :class_name => klass, :foreign_key => deleter_attribute, optional: true
+              belongs_to :deleter, :class_name => klass, :foreign_key => deleter_attribute, optional: userstamp_optional
               before_destroy  :set_deleter_attribute
             end
           end
