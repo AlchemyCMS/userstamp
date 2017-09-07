@@ -70,8 +70,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.11"
 
-  s.add_runtime_dependency 'actionpack', '>= 4.0'
-  s.add_runtime_dependency 'activerecord', '>= 4.0'
+  s.add_runtime_dependency 'actionpack', '>= 4.0', '< 5.1' 
+  s.add_runtime_dependency 'activerecord', '>= 4.0', '< 5.1'
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
