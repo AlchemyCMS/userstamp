@@ -48,7 +48,7 @@ module Ddb #:nodoc:
           class_attribute  :deleter_attribute
 
           # Define if the belongs_to association should be optional or not
-          # Defaults to true to mantein the old behavior
+          # Defaults to true to mantain the old behavior
           class_attribute  :userstamp_optional
 
         end
