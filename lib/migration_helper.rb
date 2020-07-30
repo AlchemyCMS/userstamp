@@ -16,4 +16,6 @@ module Ddb
   end
 end
 
-ActiveRecord::ConnectionAdapters::TableDefinition.send(:include, Ddb::Userstamp::MigrationHelper)
+ActiveSupport.on_load(:active_record) do
+  ActiveRecord::ConnectionAdapters::TableDefinition.send(:include, Ddb::Userstamp::MigrationHelper)
+end
