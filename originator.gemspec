@@ -72,6 +72,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'actionpack', '>= 4.0'
   s.add_runtime_dependency 'activerecord', '>= 4.0'
+  s.add_runtime_dependency 'activesupport', '>= 4.0'
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

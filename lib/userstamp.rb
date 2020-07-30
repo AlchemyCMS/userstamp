@@ -49,4 +49,4 @@ module Ddb
   end
 end
 
-ActionController::Base.send(:include, Ddb::Controller) if defined?(ActionController)
+ActiveSupport.on_load(:action_controller_base) { include Ddb::Controller }
