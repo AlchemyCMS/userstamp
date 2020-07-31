@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "originator"
-  s.version = File.read(File.join(File.dirname(__FILE__), 'VERSION')).strip
+  s.version = File.read(File.join(File.dirname(__FILE__), "VERSION")).strip
 
   s.authors = ["DeLynn Berry", "Thomas von Deyen"]
   s.homepage = "https://github.com/AlchemyCMS/originator"
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
 
   s.extra_rdoc_files = [
-    "LICENSE"
+    "LICENSE",
   ]
   s.files = [
     "CHANGELOG",
@@ -65,19 +65,19 @@ Gem::Specification.new do |s|
     "test/schema.rb",
     "test/stamping_test.rb",
     "test/userstamp_controller_test.rb",
-    "test/userstamp_test.rb"
+    "test/userstamp_test.rb",
   ]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.11"
 
-  s.add_runtime_dependency 'actionpack', '>= 4.0'
-  s.add_runtime_dependency 'activerecord', '>= 4.0'
-  s.add_runtime_dependency 'activesupport', '>= 4.0'
+  s.add_runtime_dependency "actionpack", ">= 4.0"
+  s.add_runtime_dependency "activerecord", ">= 4.0"
+  s.add_runtime_dependency "activesupport", ">= 4.0"
 
-  if s.respond_to? :specification_version then
+  if s.respond_to? :specification_version
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new("1.2.0")
     else
     end
   else

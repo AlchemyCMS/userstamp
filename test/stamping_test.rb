@@ -1,6 +1,6 @@
-require_relative 'helper'
+require_relative "helper"
 
-class StampingTests < Test::Unit::TestCase  # :nodoc:
+class StampingTests < Test::Unit::TestCase # :nodoc:
   def setup
     reset_to_defaults
     User.stamper = @zeus
@@ -9,7 +9,7 @@ class StampingTests < Test::Unit::TestCase  # :nodoc:
 
   def test_person_creation_with_stamped_object
     assert_equal @zeus.id, User.stamper
-    
+
     person = Person.create(:name => "David")
     assert_equal @zeus.id, person.creator_id
     assert_equal @zeus.id, person.updater_id
@@ -23,7 +23,7 @@ class StampingTests < Test::Unit::TestCase  # :nodoc:
 
     person = Person.create(:name => "Daniel")
     assert_equal @hera.id, person.creator_id
-    assert_equal @hera.id,  person.updater_id
+    assert_equal @hera.id, person.updater_id
     assert_equal @hera, person.creator
     assert_equal @hera, person.updater
   end
@@ -114,25 +114,24 @@ class StampingTests < Test::Unit::TestCase  # :nodoc:
     assert_not_equal nil, @first_post.deleted_at
     assert_equal @nicole.id, @first_post.deleter_id
   end
-  
+
   def test_deleter_not_present_did_not_create_deleter_relation
     @comment = Comment.create
-    assert_equal true, @comment.respond_to?('creator')
-    assert_equal true, @comment.respond_to?('updater')
-    assert_equal false, @comment.respond_to?('deleter')
+    assert_equal true, @comment.respond_to?("creator")
+    assert_equal true, @comment.respond_to?("updater")
+    assert_equal false, @comment.respond_to?("deleter")
   end
 
   def test_deleter_true_created_deleter_relation
-    assert_equal true, @first_post.respond_to?('creator')
-    assert_equal true, @first_post.respond_to?('updater')
-    assert_equal true, @first_post.respond_to?('deleter')
+    assert_equal true, @first_post.respond_to?("creator")
+    assert_equal true, @first_post.respond_to?("updater")
+    assert_equal true, @first_post.respond_to?("deleter")
   end
 
   def test_deleter_attribute_set_created_deleter_relation
     @foo = Foo.create
-    assert_equal true, @foo.respond_to?('creator')
-    assert_equal true, @foo.respond_to?('updater')
-    assert_equal true, @foo.respond_to?('deleter')
+    assert_equal true, @foo.respond_to?("creator")
+    assert_equal true, @foo.respond_to?("updater")
+    assert_equal true, @foo.respond_to?("deleter")
   end
-
 end

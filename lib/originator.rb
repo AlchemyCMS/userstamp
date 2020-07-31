@@ -1,1 +1,1 @@
-require 'userstamp'
+require "userstamp"

@@ -1,7 +1,7 @@
 class UsersController < UserstampController
   def edit
     @user = User.find(params[:id])
-    render(:inline  => "<%= @user.name %>")
+    render(:inline => "<%= @user.name %>")
   end
 
   def update
