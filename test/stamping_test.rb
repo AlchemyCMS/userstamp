@@ -1,4 +1,4 @@
-require 'test/helper'
+require_relative 'helper'
 
 class StampingTests < Test::Unit::TestCase  # :nodoc:
   def setup

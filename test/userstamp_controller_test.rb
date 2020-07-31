@@ -1,4 +1,4 @@
-require 'test/helper'
+require_relative 'helper'
 
 class PostsControllerTest < ActionController::TestCase
   def setup

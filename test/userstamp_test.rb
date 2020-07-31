@@ -1,4 +1,4 @@
-require 'test/helper'
+require_relative 'helper'
 
 class UserstampTests < ActiveSupport::TestCase
   test "it has a VERSION" do
