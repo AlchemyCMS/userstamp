@@ -1,0 +1,6 @@
+language: ruby
+os: linux
+dist: bionic
+cache:
+  bundler: true
+script: bundle exec rake
