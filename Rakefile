@@ -1,30 +1,30 @@
 #!/usr/bin/env rake
 
-require 'rake/testtask'
+require "rake/testtask"
 
 begin
-  require 'rdoc/task'
+  require "rdoc/task"
 rescue LoadError
-  require 'rdoc/rdoc'
-  require 'rake/rdoctask'
+  require "rdoc/rdoc"
+  require "rake/rdoctask"
   RDoc::Task = Rake::RDocTask
 end
 
-desc 'Default: run unit tests.'
+desc "Default: run unit tests."
 task :default => :test
 
-desc 'Test the userstamp plugin.'
+desc "Test the userstamp plugin."
 Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
+  t.libs << "lib"
+  t.pattern = "test/**/*_test.rb"
   t.verbose = true
 end
 
-desc 'Generate documentation for the userstamp plugin.'
+desc "Generate documentation for the userstamp plugin."
 RDoc::Task.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Userstamp'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('Readme.rdoc', 'CHANGELOG', 'LICENSE')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.rdoc_dir = "rdoc"
+  rdoc.title = "Userstamp"
+  rdoc.options << "--line-numbers" << "--inline-source"
+  rdoc.rdoc_files.include("Readme.rdoc", "CHANGELOG", "LICENSE")
+  rdoc.rdoc_files.include("lib/**/*.rb")
 end
